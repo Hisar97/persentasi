@@ -1,0 +1,72 @@
+mixin slide(names, slideClasses)
+  if names
+    section(class=names+' '+slideClasses, data-bespoke-backdrop='backdrop ' + names.split(' ').map(function(name) { return 'backdrop--' + name; }).join(' '))
+      block
+  else
+    section
+      block
+
+doctype html
+html
+  head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+  title A State of Change &mdash; On the future of Object.observe
+
+  link(rel='stylesheet', type='text/css', href='build/build.css')
+
+  body
+
+    article
+
+      +slide
+        img.avatar(src='images/profile.jpg')
+        h4 Xamarin Untuk Pengembangan Aplikasi Hybrid
+
+      +slide('orion')
+        h1 A State<br />of Change
+
+      +slide
+        h3 On the future of
+        h2 Object.observe
+
+      +slide
+        h2 { }
+
+      +slide
+        h2 { changed: true }
+
+      +slide
+        h2.single-words No idea it changed
+
+      +slide
+        h1 Solutions?
+
+      +slide('backbonejs')
+        pre.language-javascript
+          code.
+            var model = new Model();
+
+            model.set('foo', 'bar');
+            model.get('foo');
+
+      +slide('angularjs')
+        h2 Dirty checking
+        h3 &mdash; a.k.a. $scope.$digest( ) &mdash;
+
+      +slide
+        h3(style='width:490px') &ldquo;Angular models are plain old JavaScript objects. This makes your code easy to test, maintain, reuse, and again free from boilerplate.&rdquo;
+
+      +slide
+        h1 Object.observe
+
+      +slide
+        pre.language-javascript
+          code.
+            var o = {};
+
+            Object.observe(o, function(changes) {
+              console.log(changes);
+            });
+
+    script(src='build/build.js')
